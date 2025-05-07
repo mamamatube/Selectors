@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selectors</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <div>
+      <a href="/Users/mastudo/Desktop/webデザ/Lesson/HTML/HTML.html">HTML編</a>
+      <a href="/Users/mastudo/Desktop/webデザ/Lesson/CSS basic/CSS basic.html">CSS基本編</a>
+      <a href="/Users/mastudo/Desktop/webデザ/Lesson/CSS Advanced/CSS advanced.html">CSS応用編</a>
+      <p>Selectors編</p>
+    </div>
+    <div>
+      <a href="/Users/mastudo/Desktop/webデザ/Lesson/CSS Flexbox/flexbox.html">Flexbox編</a>
+      <a href="/Users/mastudo/Desktop/webデザ/Lesson/CSS MediaQueries/MediaQueries.html">MediaQueries編</a>
+      <a href="/Users/mastudo/Desktop/webデザ/Lesson/CSS Animation/Animation.html">Animation編</a>
+      <a href="/Users/mastudo/Desktop/webデザ/Lesson/CSS Nesting/Nesting.html">Nesting編</a>
+      <a href="/Users/mastudo/Desktop/webデザ/Lesson/CSS Grid/inndex.html">Grid編</a>
+    </div>
+  </header>
+  <a href="/Users/mastudo/Desktop/webデザ/Lesson/index.html" class="a-lesson">←Lesson</a>
+  <a class="a-top" href="#">↑TOP</a>
+  <main>
+    <h2>基本セレクター</h2>
+    <table>
+      <tr>
+        <th>名称</th>
+        <th>内容</th>
+      </tr>
+      <tr>
+        <td>要素セレクター<br>(<code>A{ }</code>)</td>
+        <td><code>&lt;h1&gt;</code>、<code>&lt;p&gt;</code>などの要素を指定するためのセレクター</td>
+      </tr>
+      <tr>
+        <td>全称セレクター<br>(<code>*{ }</code>)</td>
+        <td><code>*{ }</code>を使い、全ての要素に対し指定するセレクター。<br><code>box-sizing</code>の設定によく使われる。</td>
+      </tr>
+      <tr>
+        <td>クラスセレクター<br>(<code>.A{ }</code>)</td>
+        <td>
+          <code>class</code>属性につけた値の先頭に<code>.</code>をつけ指定するセレクター。<br>属性の値には<code>_</code>や<code>-</code>の使用はできるが、数字から始まってはいけないなど、ルールがある。<br>また、1つの要素に対し、空白で区切って複数の値を指定できる。
+        </td>
+      </tr>
+      <tr>
+        <td>idセレクター<br>(<code>#A{ }</code>)</td>
+        <td>
+          <code>class</code>属性と同じように、要素に<code>id</code>属性をつけ、値の先頭に<code>#</code>をつけ指定するセレクター。<br><code>class</code>と異なり複数の値を設定できない。<br>また、同じページ内で複数の要素に対し同じ<code>id</code>の値は設定できないルールがある。<br>(<code>JavavScript</code>でよく使われる)
+        </td>
+      </tr>
+      <tr>
+        <td>属性セレクター<br>(<code>[A]{ }</code>)</td>
+        <td>
+          <code>html</code>で設定した特定の属性がついた要素のみに対してCSSを指定したい場合に用いる。<br>指定したい属性を<code>[ ]</code>で括り指定する。<br>例)<code>target</code>がついた要素にだけ<code>margin</code>を指定したい場合→<code>[target]{ margin:~~ }</code>
+        </td>
+      </tr>
+      <tr>
+        <td>擬似クラス<br>(<code>:A{ }</code>)</td>
+        <td>
+          <div>
+            特定の要素ではなく、「形式的な位置」にプロパティを指定したい場合などに用いるセレクター。<br>例)兄弟要素のうち、"常に3番目にある要素"にスタイルを指定したい場合は<br><code>:nth-child(3){ }</code>と指定する。<br>この時、<code>()</code>の中に指定できる値として、奇数＝<code>odd</code>、偶数<code>even</code>、3倍数目＝<code>3n</code>などの種類がある。<br>また、最初の要素を指す<code>:first-child</code>や最後の要素<code>:last-child</code>もある
+          </div><br>
+          <div>
+            ユーザーの操作によって状態が変わる要素には、それぞれ異なる擬似クラスも使用できる<br><code>input</code>要素、<code>button</code>要素などには<br>マウスホバーした時にスタイルが変わるよう<code>:hover</code>を使用したり<br><code>input</code>要素のような選択した状態(focus)が持てる要素には<code>:focus</code>、<br><code>button</code>のように押し込んだり、クリックした時の状態を表現する際には<code>:active</code>を使用したりする
+          </div>
+          <br>否定の擬似クラス<code>:not()</code>をつけると、<code>()</code>内に指定した要素を除外した要素が選択されるが、<br>複合セレクターなどで範囲を限定しないとページ全体に影響が及ぶ場合がある為注意が必要。
+        </td>
+      </tr>
+      <tr>
+        <td>擬似要素<br>(<code>::A{ }</code>)</td>
+        <td>
+          CSSだけで擬似的な要素を追加することができるセレクター。<br>よく使われる<code>::before</code>、<code>::after</code>を例に、HTMLに<code>p</code>要素があった場合<br>複合セレクターを用いて<code>p::before{ content:'-';}</code>、<code>p::after{ content:'-';}</code>と置くと、<br>CSSから、HTMLの<code>p</code>要素の前後に対し<code>-</code>を付与することができる。<br>なお、あくまで指定した要素内の前後に対して挿入されるセレクターであり、<br>タグの前後に追加されるわけではない点に注意。
+        </td>
+      </tr>
+    </table>
+    <section>
+      <h3>複合セレクター<br>(<code>AB{ }</code>)</h3>
+      <p>基本セレクターを2つ以上繋げたセレクター。<br>※Aには「要素セレクター」or「全称セレクター」のみ指定でき、<br>その後ろ(B以降）には基本セレクターをどれでも繋げることが可能。<br>例)ページ内に<code
+          class="div">&lt;div&gt;</code>や<code
+          class="box">class="box"</code>が複数ある中、<code> &lt;<label class="div">div</label> <label class="box">class="box"&gt;</label>Box&lt;/<label class="div">div</label>&gt;</code>のみを指定したい場合<br>→<code><label class="div">div</label><label class="box">.box</label>{ }</code>と指定する
+      </p>
+    </section>
+    <section>
+      <h3>セレクターリスト<br>(<code>A,B{ }</code>)</h3>
+      <p>
+        複数の要素に対して同じプロパティ・値を指定したい時、複数の要素を<code>,</code>で区切ってまとめて指定することができる。<br>例)<code>&lt;h1&gt;</code>と<code>&lt;p&gt;</code>それぞれに<code>background:pink;</code>を指定したい場合<br>↓(※Google社のスタイルガイドではセレクターリストはカンマごとに改行が推奨)<code><br>h1,<br>p{ background:pink; }</code>でOK
+      </p>
+    </section>
+    <h2>結合子</h2>
+    <table>
+      <tr>
+        <th>名称</th>
+        <th>内容</th>
+      </tr>
+      <tr>
+        <td>子結合子<br>(<code>A > B{ }</code>)</td>
+        <td>
+          ある要素の中の”特定の子要素”のみに対してプロパティを指定したい場合に用いるセレクター。<br>例）<code>&lt;section&gt;</code>要素内の<code>&lt;p&gt;</code>にだけ<code>color:red;</code>を指定したい<br>→<code>section > p{ color:red; }</code>
+        </td>
+      </tr>
+      <tr>
+        <td>子孫結合子<br>(<code>A B{ }</code>)</td>
+        <td>
+          ある要素の中の特定の子要素”+孫要素以降”に対してまで<br>プロパティを指定したい場合に用いるセレクター。<br>例）<code>&lt;section&gt;</code>要素内の<code>&lt;p&gt;</code>、さらにその中の要素（<code>&lt;section&gt;</code>視点の孫要素）にまで<code>color:red;</code>を指定<br>→<code>section p{ color:red; }</code>
+        </td>
+      </tr>
+      <tr>
+        <td>隣接兄弟結合子<br>(<code>A + B{ }</code>)</td>
+        <td>
+          複数要素が並んでいる際、特定の並びを持つ要素のみを選択するセレクター<br><code>A + B{ }</code>の場合、「直前の兄弟要素に<code>&lt;A&gt;</code>を持つ<label><code>&lt;B&gt;</code>に対して指定</label>するセレクター」となる
+        </td>
+      </tr>
+    </table>
+    <section>
+      <h3>セレクターの優先度</h3>
+      <p>
+        同一の要素に対して同じセレクター・値を指定した場合には、セレクターの優先度によって反映される値が変わる。<br>①idセレクターが現れる回数<br>②クラスセレクター、擬似クラス、属性差レクターが現れる回数<br>③要素セレクター、擬似要素が現れる回数<br>上記①→③の勝ち抜き方式で優先度が決定する。（開発者ツールで確認するのが一般的）<br>なお、さらに優先度が高い方法として<br>・HTMLの要素に直接スタイルをつける方法<br>・プロパティの値の最後に<code>!important</code>をつける方法（直接スタイルつけるより最優先）もある
+      </p>
+    </section>
+  </main>
+</body>
+
+</html>
